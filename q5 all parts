@@ -1,0 +1,111 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int main() {
+
+    // ---------------- (a) Diagonal Matrix ----------------
+    cout << "\n(a) Diagonal Matrix\n";
+    int diag[3];
+    cout << "Enter 3 diagonal elements: ";
+    for (int i = 0; i < 3; i++) cin >> diag[i];
+
+    int D[3][3] = {0};
+    for (int i = 0; i < 3; i++)
+        D[i][i] = diag[i];
+
+    cout << "Diagonal Matrix:\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++)
+            cout << D[i][j] << " ";
+        cout << endl;
+    }
+
+
+    // ---------------- (b) Tri-Diagonal Matrix ----------------
+    cout << "\n(b) Tri-Diagonal Matrix\n";
+    int triElements[13];
+    cout << "Enter 13 elements for tri-diagonal (row-wise): ";
+    for (int i = 0; i < 13; i++) cin >> triElements[i];
+
+    int T[5][5] = {0}, k = 0;
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            if (abs(i - j) <= 1)
+                T[i][j] = triElements[k++];
+        }
+    }
+
+    cout << "Tri-Diagonal Matrix:\n";
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++)
+            cout << T[i][j] << " ";
+        cout << endl;
+    }
+
+
+    // ---------------- (c) Lower Triangular Matrix ----------------
+    cout << "\n(c) Lower Triangular Matrix\n";
+    int lowerElements[10];
+    cout << "Enter 10 elements for lower triangular (row-wise): ";
+    for (int i = 0; i < 10; i++) cin >> lowerElements[i];
+
+    int L[4][4] = {0}; k = 0;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j <= i; j++) {
+            L[i][j] = lowerElements[k++];
+        }
+    }
+
+    cout << "Lower Triangular Matrix:\n";
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            cout << L[i][j] << " ";
+        cout << endl;
+    }
+
+
+    // ---------------- (d) Upper Triangular Matrix ----------------
+    cout << "\n(d) Upper Triangular Matrix\n";
+    int upperElements[10];
+    cout << "Enter 10 elements for upper triangular (row-wise): ";
+    for (int i = 0; i < 10; i++) cin >> upperElements[i];
+
+    int U[4][4] = {0}; k = 0;
+    for (int i = 0; i < 4; i++) {
+        for (int j = i; j < 4; j++) {
+            U[i][j] = upperElements[k++];
+        }
+    }
+
+    cout << "Upper Triangular Matrix:\n";
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            cout << U[i][j] << " ";
+        cout << endl;
+    }
+
+
+    // ---------------- (e) Symmetric Matrix ----------------
+    cout << "\n(e) Symmetric Matrix\n";
+    int symElements[10];
+    cout << "Enter 10 elements for symmetric matrix (lower triangle): ";
+    for (int i = 0; i < 10; i++) cin >> symElements[i];
+
+    int S[4][4] = {0}; k = 0;
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j <= i; j++) {
+            S[i][j] = symElements[k++];
+            S[j][i] = S[i][j]; // copy to make symmetric
+        }
+    }
+
+    cout << "Symmetric Matrix:\n";
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4; j++)
+            cout << S[i][j] << " ";
+        cout << endl;
+    }
+
+    return 0;
+}
