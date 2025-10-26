@@ -1,0 +1,19 @@
+#include <iostream>
+#include <string.h>
+using namespace std;
+
+int main() {
+    int n; cout << "How many? "; cin >> n;
+    char a[20][50], tmp[50];
+    for (int i = 0; i < n; i++) cin >> a[i];
+
+    for (int i = 0; i < n - 1; i++)
+        for (int j = i + 1; j < n; j++)
+            if (strcmp(a[i], a[j]) > 0) {
+                strcpy(tmp, a[i]); strcpy(a[i], a[j]); strcpy(a[j], tmp);
+            }
+
+    cout << "Sorted:\n";
+    for (int i = 0; i < n; i++) cout << a[i] << "\n";
+    return 0;
+}
